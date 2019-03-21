@@ -1,28 +1,69 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class PlacesAdd extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      input: '',
+      places: []
+    }
+    this.enterNewPlace=this.enterNewPlace.bind(this)
+    this.addPlace=this.addPlace.bind(this)
+  }
+  
+  enterNewPlace = (e) => {
+    this.setState({
+      input: e.target.value
+    })
+  }
+  
+  addPlace = (event) => {
+    event.preventDefault()
+    this.setState({
+      input: "",
+      places: [... this.state.places, this.state.input]
+    })
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        
+        
+        <form onSubmit={this.addPlace}>
+          <input placeholder="Enter New Place" value={this.state.input} onChange={this.enterNewPlace}/>
+          <button>Enter Place</button>
+        </form>
+        
+        <PlacesList item={this.state.places} />
+        
+      </div>
+    )
+  }
+}
+
+
+function PlacesList(props) {
+  return(
+    <div>
+      <ul>
+        {props.item.map((item, index) => <li key={index}>{item}</li>)}
+      </ul>
+    </div>
+    )
+}
+
+class FrontPage extends React.Component {
+
+  render() {
+    return (
+      <div className="storeList">
+          <h1>Where to Eat?</h1>
+        <PlacesAdd />
       </div>
     );
   }
 }
 
-export default App;
+export default FrontPage;
