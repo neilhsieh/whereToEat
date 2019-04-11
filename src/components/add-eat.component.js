@@ -1,6 +1,7 @@
 // future updates: star rating system
 
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class AddEat extends Component {
   constructor(props) {
@@ -36,15 +37,31 @@ export default class AddEat extends Component {
     })
   }
 
+  // onSubmition function
   addPlace = (event) => {
     event.preventDefault()
-    // add to database
+    
+    console.log(`Form Submitted`)
+    console.log(`Name: ${this.state.name}`)
+    console.log(`Type: ${this.state.type}`)
+    console.log(`Address: ${this.state.address}`)
+
+    const newPlace = {
+      name: this.state.name,
+      type: this.state.type,
+      address: this.state.address
+    }
+
+    axios.post('http://localhost:4000/addEat', newPlace)
+      .then(res => console.log(res.data))
 
     this.setState({
       name: "",
       type: "",
       address: ""
     })
+
+    this.props.history.push('/')
   }
 
   render() {
