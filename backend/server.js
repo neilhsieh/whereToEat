@@ -32,6 +32,18 @@ placesRoutes.route('/').get(function(req, res) {
   })
 })
 
+// Pick Random Place
+placesRoutes.route('/random').get(function(req, res) {
+  Places.aggregate(
+    [ { $sample: { size: 1 } } ]
+ )
+ .then(randPlace => {
+   res.json(randPlace)
+ })
+})
+
+  
+
 // Shows place by id
 placesRoutes.route('/:id').get(function(req, res) {
   let id = req.params.id

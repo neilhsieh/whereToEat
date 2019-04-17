@@ -18,10 +18,13 @@ export default class ListPlaces extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      places: []
+      places: [],
+      randPlace: []
     }
 
-    // this.placesList = this.placesList.bind(this)
+    this.placesList = this.placesList.bind(this)
+    this.pickPlace = this.pickPlace.bind(this)
+    this.showRand = this.showRand.bind(this)
   }
 
   componentDidMount() {
@@ -38,14 +41,38 @@ export default class ListPlaces extends Component {
     return this.state.places.map((currentPlace, i) => {
         return <Places placesItem={currentPlace} key={i} />
       })
-    
   }
 
+  showRand() {
+    return this.state.randPlace.map((random, i) => {
+      return <Places placesItem={random} key={i} />
+    })
+  }
+
+  pickPlace() {
+    axios.get('http://localhost:4000/random/')
+    .then( response => {
+      this.setState({ randPlace: response.data })
+      console.log(response.data)
+    })
+  }
 
   render() {
     return (
       <div>
         <h1>Where to Eat?</h1>
+        <div>
+          <button className="btn btn-info" onClick={this.pickPlace}>Pick for Me!</button>
+        </div>
+
+        <div className="table-responsive">
+          <table className="table">
+            <tbody>
+              {this.showRand()}
+            </tbody>
+          </table>
+        </div>
+
         <div className="table-responsive">
           <table className="table">
             <thead>
