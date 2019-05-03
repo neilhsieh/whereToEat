@@ -1,13 +1,131 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  width: 1000px;
-  margin: 0 auto;
-  margin-top: 20px;
+  width: auto;
+  margin: 20 auto;
   padding: 10px;
 }
 
-ol, ul {
-  padding-left: 10px;
+.button {
+  border-radius: 25px;
+  border: solid;
+  border-width: 1px;
+  padding: 10px 15px 10px 15px;
   margin: 10px;
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.places-list {
+  border: solid;
+  border-width: 1px;
+  border-color: #e3e6ea;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+thead tbody td th {
+  table-layout: fixed;
+  white-space: nowrap;
+}
+
+thead {
+  width: auto;
+}
+
+tbody {
+  margin-top: 10px;
+}
+
+.random-btn {
+  margin-bottom: 10px;
+}
+
+.random-list {
+  display: block;
+}
+
+.input-container {
+  border: solid;
+  border-width: 1px;
+  border-color: #e3e6ea;
+  padding: 20px;
+  border-radius: 5px;
+  width: 650px;
+  height: auto;
+  
+  position: absolute;
+  left: 50%;
+  margin: 50px 0 0 -350px;
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "title title"
+    "form form";
+}
+
+.text-container {
+  grid-area: title;
+  text-align: center;
+}
+
+.input-form {
+  display: grid;
+  grid-area: form;
+  grid-template-columns: 25% auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "text-name text-input"
+    "type-name type-input"
+    "add-name add-input"
+    "button .";
+}
+
+.rest-text {
+  grid-area: text-name;
+  text-align: right;
+}
+
+.rest-input input[type=text]{
+  grid-area: text-input;
+  width: 90%;
+  margin-left: 5%;
 
 }
+
+.type-text {
+  grid-area: type-name;
+  text-align: right;
+}
+
+.type-input input[type=text]{
+  grid-area: type-input;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.add-text {
+  grid-area: add-name;
+  text-align: right;
+}
+
+.add-input input[type=text]{
+  grid-area: add-input;
+  width: 90%;
+  margin-left: 5%;
+
+}
+
+input[type=submit] {
+  grid-area: button;
+  margin-left: 4rem;
+}
+

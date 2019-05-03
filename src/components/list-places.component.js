@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import Notifier from './notifier.component'
+
 const Places = props => (
   <tr>
-    <td>{props.placesItem.name}</td>
+    <th>{props.placesItem.name}</th>
     <td>{props.placesItem.type}</td>
     <td>{props.placesItem.address}</td>
     <td> 
@@ -19,12 +21,14 @@ export default class ListPlaces extends Component {
     super(props)
     this.state = {
       places: [],
-      randPlace: []
+      randPlace: [],
+      successAdd: false
     }
 
     this.placesList = this.placesList.bind(this)
     this.pickPlace = this.pickPlace.bind(this)
     this.showRand = this.showRand.bind(this)
+    this.showNotifier = this.showNotifier.bind(this)
   }
 
   componentDidMount() {
@@ -45,7 +49,16 @@ export default class ListPlaces extends Component {
 
   showRand() {
     return this.state.randPlace.map((random, i) => {
-      return <Places placesItem={random} key={i} />
+      return (
+        <div className="places-list random-list">
+          <h4><i>You're eating at... </i></h4>
+          <table className="table">
+            <tbody>
+              <Places placesItem={random} key={i} />
+            </tbody>
+          </table>
+        </div>
+      )
     })
   }
 
@@ -53,27 +66,39 @@ export default class ListPlaces extends Component {
     axios.get('http://localhost:4000/random/')
     .then( response => {
       this.setState({ randPlace: response.data })
-      console.log(response.data)
     })
+  }
+
+  showSuccess(props) {
+    this.setState({
+      successAdd: props.success
+    })
+  }
+
+  showNotifier () {
+    if(this.state.successAdd === true){
+      return (
+        <div>
+          <Notifier/>
+        </div>
+      )
+    }
   }
 
   render() {
     return (
       <div>
+        
+        {this.showNotifier()}
+        
         <h1>Where to Eat?</h1>
         <div>
-          <button className="btn btn-info" onClick={this.pickPlace}>Pick for Me!</button>
+          <button className="button" onClick={this.pickPlace}>Pick for Me!</button>
         </div>
 
-        <div className="table-responsive">
-          <table className="table">
-            <tbody>
-              {this.showRand()}
-            </tbody>
-          </table>
-        </div>
+        {this.showRand()}
 
-        <div className="table-responsive">
+        <div className="places-list">
           <table className="table">
             <thead>
               <tr>

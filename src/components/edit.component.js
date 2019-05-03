@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+
 export default class UpdatePlaces extends Component {
   constructor(props) {
     super(props)
@@ -80,13 +81,13 @@ export default class UpdatePlaces extends Component {
           <h1>Update Place</h1>
           <form onSubmit={this.updatePlace}>
           <div>
-            <label>Restaurant Name: <input type='text' value={this.state.name} onChange={this.nameChange}/></label>
+            <label>Restaurant Name: </label><input type='text' value={this.state.name} onChange={this.nameChange}/>
           </div>
           <div>
-            <label>Type: <input type='text' value={this.state.type} onChange={this.typeChange}/></label>
+            <label>Type: </label><input type='text' value={this.state.type} onChange={this.typeChange}/>
           </div>
           <div>
-            <label>Address: <input type='text' value={this.state.address} onChange={this.addressChange}/></label>
+            <label>Address: </label><input type='text' value={this.state.address} onChange={this.addressChange}/>
           </div>
           <input type="submit" value="Submit" className="btn btn-primary" />
           <input type="button" onClick={this.deletePlace} value="Delete" className="btn btn-danger btn-xs" />
