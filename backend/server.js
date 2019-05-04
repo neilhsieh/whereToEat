@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose')
-const PORT = 4000;
+const path = require('path')
 
 const placesRoutes = express.Router()
 
@@ -13,13 +13,22 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+// Local database
+// mongoose.connect ('mongodb://localhost:27017/whereToEat', {useNewUrlParser: true})
+// const connection = mongoose.connection
+// connection.once('open', function () {
+//   console.log('MongoDB database connection established successfully.')
+// })
 
-mongoose.connect ('mongodb://localhost:27017/whereToEat', {useNewUrlParser: true})
-const connection = mongoose.connection
+// DB Config mLab
+const db = require('./config/keys').mongoURI
+mongoose
+  .connect (db, {useNewUrlParser: true})
+  .then(() => console.log('MongoDB connected...'))
+  .catch(err => console.log(err))
 
-connection.once('open', function () {
-  console.log('MongoDB database connection established successfully.')
-})
+const PORT = process.env.PORT || 4000
+
 
 // List all places
 placesRoutes.route('/').get(function(req, res) {
@@ -111,6 +120,13 @@ placesRoutes.route('/delete/:id').delete(function(req, res, next) {
 
 app.use('/', placesRoutes)
 
+// Serve static assets if in production
+if (process.env.PORT === 'production') {
+  app.use(express.static('./build'))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './build', 'index.html'))
+  })
+}
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
