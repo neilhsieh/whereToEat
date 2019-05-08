@@ -63,7 +63,7 @@ export default class ListPlaces extends Component {
   }
 
   pickPlace() {
-    axios.get('http://localhost:4000/random/')
+    axios.get('/random/')
     .then( response => {
       this.setState({ randPlace: response.data })
     })

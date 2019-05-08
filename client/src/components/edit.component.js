@@ -20,7 +20,7 @@ export default class UpdatePlaces extends Component {
 
   }
   componentDidMount() {
-    axios.get('http://localhost:4000/'+ this.props.match.params.id)
+    axios.get('/'+ this.props.match.params.id)
     .then(response => {
       console.log("updating information")
       this.setState({ 
@@ -61,14 +61,14 @@ export default class UpdatePlaces extends Component {
       address: this.state.address
     }
 
-    axios.post('http://localhost:4000/update/'+this.props.match.params.id, updatedPlace)
+    axios.post('/update/'+this.props.match.params.id, updatedPlace)
       .then(res => console.log(res.data))
 
     this.props.history.push('/')
   }
 
   deletePlace = e => {
-    axios.delete('http://localhost:4000/delete/'+this.props.match.params.id)
+    axios.delete('/delete/'+this.props.match.params.id)
     .then(res => console.log("Deleted"))
     .catch(err => console.log(err))
 

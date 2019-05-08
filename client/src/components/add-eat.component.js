@@ -54,7 +54,7 @@ export default class AddEat extends Component {
       address: this.state.address
     }
 
-    axios.post('http://localhost:4000/addEat', newPlace)
+    axios.post('/addEat', newPlace)
       .then(res => console.log(res.data))
 
     this.setState({
