@@ -32,7 +32,7 @@ export default class ListPlaces extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/')
+    axios.get('/')
       .then(response => {
         this.setState({ places: response.data})
       })
