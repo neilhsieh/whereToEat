@@ -7,7 +7,6 @@ const path = require('path')
 
 const placesRoutes = express.Router()
 
-const PORT = process.env.PORT || 4000
 
 
 let Places = require('./places.model')
@@ -125,10 +124,14 @@ app.use('/', placesRoutes)
 // Serve static assets if in production
 if (process.env.PORT === 'production') {
   app.use(express.static('client/build'))
-  app.get('/*', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')) // relative path
   })
 }
-app.listen(PORT, function() {
-    console.log("Server is running on Port: " + PORT);
+
+const port = process.env.PORT || 4000
+
+
+app.listen(port, function() {
+    console.log("Server is running on Port: " + port);
 });
