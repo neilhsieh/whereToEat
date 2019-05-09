@@ -125,7 +125,7 @@ app.use('/', placesRoutes)
 // Serve static assets if in production
 if (process.env.PORT === 'production') {
   app.use(express.static('client/build'))
-  app.get('*', (req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')) // relative path
   })
 }
