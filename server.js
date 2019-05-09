@@ -7,6 +7,9 @@ const path = require('path')
 
 const placesRoutes = express.Router()
 
+const PORT = process.env.PORT || 4000
+
+
 let Places = require('./places.model')
 
 app.use(cors());
@@ -27,7 +30,6 @@ mongoose
   .then(() => console.log('MongoDB connected...'))
   .catch(err => console.log(err))
 
-const PORT = process.env.PORT || 4000
 
 
 // List all places
@@ -122,9 +124,9 @@ app.use('/', placesRoutes)
 
 // Serve static assets if in production
 if (process.env.PORT === 'production') {
-  app.use(express.static('./build'))
+  app.use(express.static('client/build'))
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')) // relative path
   })
 }
 app.listen(PORT, function() {
