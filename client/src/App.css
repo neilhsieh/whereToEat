@@ -14,8 +14,19 @@ body {
   text-align: center;
 }
 
+.button-del {
+  background-color: #ffb3b3;
+}
+
 .button:hover {
   opacity: 0.5;
+}
+
+.button-del:hover {
+  background-color: #EA0000;
+  border: none;
+  color: white;
+  opacity: 1;
 }
 
 .button:focus {
@@ -26,8 +37,9 @@ body {
   border: solid;
   border-width: 1px;
   border-color: #e3e6ea;
-  padding: 10px;
+  padding: 10px 10px 0px 10px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 thead tbody td th {
@@ -35,8 +47,9 @@ thead tbody td th {
   white-space: nowrap;
 }
 
-thead {
-  width: auto;
+thead tbody {
+  border-bottom: 1px;
+  width: 100%;
 }
 
 tbody {
@@ -86,7 +99,7 @@ tbody {
     "text-name text-input"
     "type-name type-input"
     "add-name add-input"
-    "button .";
+    "button button-del";
 }
 
 .rest-text {
@@ -121,11 +134,16 @@ tbody {
   grid-area: add-input;
   width: 90%;
   margin-left: 5%;
-
 }
 
 input[type=submit] {
   grid-area: button;
   margin-left: 4rem;
+}
+
+input[type=button] {
+  grid-area: button-del;
+  margin-left: 4rem;
+  width: 80px;
 }
 

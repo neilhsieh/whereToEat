@@ -69,7 +69,7 @@ export default class AddEat extends Component {
     return(
       <div className="input-container">
         <div className="text-container">
-          <h1>Add New Place to Eat</h1>
+          <h1>Add New Place</h1>
         </div>
         <form className="input-form" onSubmit={this.addPlace}>
           <div className="rest-text">

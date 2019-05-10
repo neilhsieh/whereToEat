@@ -77,22 +77,33 @@ export default class UpdatePlaces extends Component {
 
   render() {
       return(
-        <div>
+        <div className="input-container">
+        <div className="text-container">
           <h1>Update Place</h1>
-          <form onSubmit={this.updatePlace}>
-          <div>
-            <label>Restaurant Name: </label><input type='text' value={this.state.name} onChange={this.nameChange}/>
-          </div>
-          <div>
-            <label>Type: </label><input type='text' value={this.state.type} onChange={this.typeChange}/>
-          </div>
-          <div>
-            <label>Address: </label><input type='text' value={this.state.address} onChange={this.addressChange}/>
-          </div>
-          <input type="submit" value="Submit" className="btn btn-primary" />
-          <input type="button" onClick={this.deletePlace} value="Delete" className="btn btn-danger btn-xs" />
-          </form>
         </div>
+        <form className="input-form" onSubmit={this.addPlace}>
+          <div className="rest-text">
+            <label>Restaurant Name: </label>
+          </div>
+          <div className="rest-input">
+            <input type='text' value={this.state.name} onChange={this.nameChange}/>
+          </div>
+          <div className="type-text"> 
+            <label>Type: </label>
+          </div>
+          <div className="type-input">
+            <input type='text' value={this.state.type} onChange={this.typeChange}/>
+          </div>
+          <div className="add-text">
+            <label>Address: </label>
+          </div>
+          <div className="add-input">
+            <input type='text' value={this.state.address} onChange={this.addressChange}/>
+          </div >
+          <input type="submit" value="Submit" className="button" />
+          <input type="button" value="Delete" onClick={this.deletePlace} className="button button-del" />
+        </form>
+      </div>
       )
   }
 }

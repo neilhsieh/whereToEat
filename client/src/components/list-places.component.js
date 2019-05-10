@@ -12,7 +12,6 @@ const Places = props => (
     <td> 
       <Link to={"/update/"+props.placesItem._id}>Edit</Link> 
     </td>
-    <td></td>
   </tr>
 )
 
@@ -100,7 +99,7 @@ export default class ListPlaces extends Component {
 
         <div className="places-list">
           <table className="table">
-            <thead>
+            <thead className="table-borderless">
               <tr>
                 <th>Name</th>
                 <th>Type</th>
