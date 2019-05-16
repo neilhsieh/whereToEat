@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ListPlaces from './list-places.component'
-
 export default class AddEat extends Component {
   constructor(props) {
     super(props)

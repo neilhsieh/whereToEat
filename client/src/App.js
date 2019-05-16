@@ -4,12 +4,13 @@
 // Add flash notifications for new add/delete/edit
 
 
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+import './css/styles.css'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
+import AppNavbar from './components/navbar.components'
 import AddEat from './components/add-eat.component'
 import ListPlaces from './components/list-places.component'
 import UpdatePlaces from './components/edit.component'
@@ -20,19 +21,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container">
-          <nav className="navbar navbar-expand-sm navbar-light bg-light">
-            <a className="navbar-brand" href="/">WhereToEat</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav">
-                <a className="nav-item nav-link active" href="#">Home <span className="sr-only">(current)</span></a>
-                <a className="nav-item nav-link" href="/addEat">Add</a>
-
-              </div>
-            </div>
-          </nav>
+          <AppNavbar />
           <br/>
           {/* <PlacesAdd />  */}
           <Route path="/" exact component={ListPlaces} /> 

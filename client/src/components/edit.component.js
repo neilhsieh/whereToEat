@@ -100,7 +100,7 @@ export default class UpdatePlaces extends Component {
           <div className="add-input">
             <input type='text' value={this.state.address} onChange={this.addressChange}/>
           </div >
-          <input type="submit" value="Submit" className="button" />
+          <input type="submit" value="Submit" onClick={this.updatePlace} className="button" />
           <input type="button" value="Delete" onClick={this.deletePlace} className="button button-del" />
         </form>
       </div>
