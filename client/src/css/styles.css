@@ -32,6 +32,39 @@ body {
 .button:focus {
   outline: none; }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 650px;
+  position: absolute;
+  left: 50%;
+  margin: 60px 0 0 -325px; }
+
+.form-title {
+  margin-bottom: 10px; }
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .input-form div {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px; }
+    .input-form div label {
+      display: flex;
+      width: 195px;
+      justify-content: flex-end; }
+    .input-form div input[type=text] {
+      margin-left: 20px;
+      width: 357.5px; }
+  .input-form .form-button {
+    display: flex;
+    justify-content: center; }
+    .input-form .form-button .button {
+      width: 150px; }
+
 .nav-container {
   background-color: #F2F2F2;
   justify-content: space-between;

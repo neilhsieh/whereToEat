@@ -13,6 +13,10 @@ const Places = new Schema({
   address: {
     type: String,
     required: true
+  },
+  link: {
+    type: String,
+    required: true
   }
 })
 

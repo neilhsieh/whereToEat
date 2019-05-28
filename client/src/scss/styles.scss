@@ -22,6 +22,7 @@ body {
   padding: 10px 15px 10px 15px;
   margin: 10px;
   text-align: center;
+  
 }
 
 .button:hover {
@@ -43,6 +44,62 @@ body {
 .button:focus {
   outline: none;
 }
+
+
+// Forms start ----------
+
+$form-container-width: 650px;
+
+.input-container {
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  
+  width: $form-container-width;
+  position: absolute;
+  left: 50%;
+  margin: 60px 0 0 -325px;
+}
+
+.form-title {
+  margin-bottom: 10px;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
+  div {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+
+    label {
+      display: flex;
+      width: $form-container-width * 0.3;
+      justify-content: flex-end;
+    }
+    input[type=text] {
+      margin-left: 20px;
+      width: $form-container-width * 0.55;
+    }
+  }
+
+  .form-button {
+    display: flex;
+    justify-content: center;
+
+    .button {
+      width: 150px;
+    }
+  }
+
+}
+
+// Forms end ----------
 
 
 // Navbar start ----------
@@ -78,4 +135,4 @@ body {
 
 }
 
-// Navbar end ------------
+// Navbar end ----------

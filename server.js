@@ -7,6 +7,7 @@ const path = require('path')
 
 const placesRoutes = express.Router()
 
+const port = process.env.PORT || 4000
 
 
 let Places = require('./places.model')
@@ -71,7 +72,8 @@ placesRoutes.route('/addEat').post(function(req, res) {
   const newPlace = {
     name: req.body.name,
     type: req.body.type,
-    address: req.body.address
+    address: req.body.address,
+    link: req.body.link
   }
 
   let places = new Places(newPlace)
@@ -94,6 +96,7 @@ placesRoutes.route('/update/:id').post(function(req, res) {
       places.name = req.body.name,
       places.type = req.body.type,
       places.address = req.body.address
+      places.link = req.body.link
     }
 
     places.save()
@@ -130,7 +133,6 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const port = process.env.PORT || 4000
 
 
 app.listen(port, function() {

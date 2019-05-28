@@ -8,7 +8,16 @@ const Places = props => (
   <tr>
     <th>{props.placesItem.name}</th>
     <td>{props.placesItem.type}</td>
-    <td>{props.placesItem.address}</td>
+    <td>
+      <Link to={{
+        pathname:'/link',
+        state: {
+          mapLink: 'testing link'
+        }
+      }}>
+        {props.placesItem.address}
+      </Link>
+    </td>
     <td> 
       <Link to={"/update/"+props.placesItem._id}>Edit</Link> 
     </td>

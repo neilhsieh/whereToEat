@@ -20,5 +20,11 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.20",
     "nodemon": "^1.18.10"
-  }
+  },
+  "resolutions": {
+    "nodemon/pstree.remy": "1.1.0"
+  },
+  "engines": {
+    "node": "10.13.0"
+}
 }

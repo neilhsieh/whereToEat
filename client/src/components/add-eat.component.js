@@ -9,12 +9,14 @@ export default class AddEat extends Component {
     this.state = {
       name: '',
       type: '',
-      address: ''
+      address: '',
+      link: ''
     }
     
     this.nameChange = this.nameChange.bind(this)
     this.typeChange = this.typeChange.bind(this)
     this.addressChange = this.addressChange.bind(this)
+    this.linkChange = this.linkChange.bind(this)
     this.addPlace = this.addPlace.bind(this)
     
   }
@@ -36,7 +38,11 @@ export default class AddEat extends Component {
       address: e.target.value
     })
   }
-
+  linkChange = (e) => {
+    this.setState({
+      link: e.target.value
+    })
+  }
   // onSubmition function
   addPlace = (event) => {
     event.preventDefault()
@@ -49,7 +55,8 @@ export default class AddEat extends Component {
     const newPlace = {
       name: this.state.name,
       type: this.state.type,
-      address: this.state.address
+      address: this.state.address,
+      link: this.state.link
     }
 
     axios.post('/addEat', newPlace)
@@ -58,7 +65,8 @@ export default class AddEat extends Component {
     this.setState({
       name: "",
       type: "",
-      address: ""
+      address: "",
+      link: ""
     })
     this.props.history.push('/')
   }
@@ -66,29 +74,29 @@ export default class AddEat extends Component {
   render() {
     return(
       <div className="input-container">
-        <div className="text-container">
+        <div className="form-title">
           <h1>Add New Place</h1>
         </div>
         <form className="input-form" onSubmit={this.addPlace}>
-          <div className="rest-text">
+          <div className="form-rest">
             <label>Restaurant Name: </label>
-          </div>
-          <div className="rest-input">
             <input type='text' value={this.state.name} onChange={this.nameChange}/>
           </div>
           <div className="type-text"> 
             <label>Type: </label>
-          </div>
-          <div className="type-input">
             <input type='text' value={this.state.type} onChange={this.typeChange}/>
           </div>
           <div className="add-text">
             <label>Address: </label>
-          </div>
-          <div className="add-input">
             <input type='text' value={this.state.address} onChange={this.addressChange}/>
-          </div >
-          <input type="submit" value="Submit" className="button" />
+          </div>
+          <div className="link-text">
+            <label>Link: </label>
+            <input type='text' value={this.state.link} onChange={this.linkChange}/>
+          </div>
+          <div className="form-button">
+            <input type="submit" value="Submit" className="button" />
+          </div>      
         </form>
       </div>
     )
