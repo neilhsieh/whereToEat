@@ -1,7 +1,7 @@
 # whereToEat
 List of restaurants vouched for and submitted by users. Has option to randomly select item from list for the indecisive!
 
-#Sample Use Case
+# Sample Use Case
 - Add new restaurant using 'Add' button, and fill out appropriate information.
 - Scroll through list to find what they like.
 - Edit using the 'Edit' button on the respective restaurant in list
