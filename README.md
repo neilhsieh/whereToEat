@@ -1,5 +1,5 @@
 # whereToEat
-List of restaurants vouched for and submitted by users. Has option to randomly select item from list for the indecisive!
+List of restaurants vouched for and submitted by users.
 
 ## Sample Use Case
 - Add new restaurant using 'Add' button, and fill out appropriate information.
