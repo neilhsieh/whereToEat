@@ -22,3 +22,4 @@ List of restaurants vouched for and submitted by users.
 
 ## Roadmap
 - add in clickable location to automatically open in Google Maps
+- successfully deploy all elements to Heroku
